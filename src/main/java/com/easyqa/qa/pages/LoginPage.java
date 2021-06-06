@@ -2,6 +2,7 @@ package com.easyqa.qa.pages;
 
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
+
 import static com.codeborne.selenide.Selenide.page;
 
 public class LoginPage {

@@ -1,6 +1,7 @@
 import com.codeborne.selenide.Configuration;
 import com.easyqa.qa.pages.*;
 import com.easyqa.qa.pages.util.CardData;
+import com.easyqa.qa.pages.util.UserData;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -41,9 +42,10 @@ public class FirstTests {
     @Test
     public void createCard(){
         CardData issue = new CardData("test2","test description");
+        UserData login = new UserData("stalkerskos@yandex.ru","stalkerkos");
         LoginPage loginPage = open("https://app.geteasyqa.com/users/sign_in",LoginPage.class);
-        loginPage.enterLogin("stalkerskos@yandex.ru");
-        loginPage.enterPassword("stalkerkos");
+        loginPage.enterLogin(login.getUserName());
+        loginPage.enterPassword(login.getUserPassword());
         DashboardPage dashboardPage = loginPage.clickLoginBtn();
         dashboardPage.checkUserAuthorized();
         ProjectsPage projectsPage = dashboardPage.openMyProjects();
