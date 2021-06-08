@@ -57,6 +57,7 @@ public class FirstTests {
         issuesPage.clickAddNewIssue();
         issuesPage.AddNewIssue(issue.getCardName(), issue.getCardDescription());
         issuesPage.checkIssueAdded(issue.getCardName());
+
     }
 
 

@@ -29,6 +29,15 @@ public class IssuesPage {
     @FindBy(xpath = "//label[.='High']")
     public SelenideElement issuePriorityHigh;
 
+    @FindBy(xpath = "//label[.='Low']")
+    public SelenideElement issuePriorityLow;
+
+    @FindBy(xpath = "//label[.='Medium']")
+    public SelenideElement issuePriorityMedium;
+
+    @FindBy(xpath = "//label[.='Critical']")
+    public SelenideElement issuePriorityCritical;
+
     @FindBy(name = "commit")
     public SelenideElement issueSaveBtn;
 
@@ -49,11 +58,13 @@ public class IssuesPage {
         issueTypeBug.click();
     }
 
-    public void setIssuePriorityHigh() {
+
+
+    /*public void setIssuePriorityHigh() {
         issuePrioritySelector.click();
         issuePriorityHigh.click();
 
-    }
+    }*/
 
     public void AddNewIssue(String issueName, String issueDesc){
         issueSummary.click();
@@ -62,7 +73,8 @@ public class IssuesPage {
         issueDescription.click();
         issueDescription.sendKeys(issueDesc);
         setIssueTypeBug();
-        setIssuePriorityHigh();
+       /* setIssuePriorityHigh();*/
+        setPriority(1);
         issueSaveBtn.click();
     }
 
@@ -70,5 +82,29 @@ public class IssuesPage {
         cardName.shouldBe(Condition.text(issueName));
     }
 
+    public void setPriority(int a){
+
+        switch(a){
+            case 1:
+                issuePrioritySelector.click();
+                issuePriorityLow.click();
+                break;
+            case 2:
+                issuePrioritySelector.click();
+                issuePriorityMedium.click();
+                break;
+            case 3:
+                issuePrioritySelector.click();
+                issuePriorityHigh.click();
+            break;
+            case 4:
+                issuePrioritySelector.click();
+                issuePriorityCritical.click();
+            break;
+            default:
+                break;
+        }
+
+    }
 }
 
