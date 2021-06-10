@@ -55,7 +55,7 @@ public class FirstTests {
         IssuesPage issuesPage = projectDashboardPage.openIssues();
         issuesPage.checkIssuesPage();
         issuesPage.clickAddNewIssue();
-        issuesPage.AddNewIssue(issue.getCardName(), issue.getCardDescription());
+        issuesPage.AddNewIssue(issue.getCardName(), issue.getCardDescription(), "high");
         issuesPage.checkIssueAdded(issue.getCardName());
 
     }

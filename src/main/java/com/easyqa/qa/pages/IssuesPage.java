@@ -66,15 +66,16 @@ public class IssuesPage {
 
     }*/
 
-    public void AddNewIssue(String issueName, String issueDesc){
+    public void AddNewIssue(String issueName, String issueDesc, String priority){
         issueSummary.click();
         issueSummary.sendKeys(issueName);
 
         issueDescription.click();
         issueDescription.sendKeys(issueDesc);
         setIssueTypeBug();
-       /* setIssuePriorityHigh();*/
-        setPriority(1);
+        setPriority(priority);
+        /* setIssuePriorityHigh();*/
+        /*setPriority("critical");*/
         issueSaveBtn.click();
     }
 
@@ -82,22 +83,22 @@ public class IssuesPage {
         cardName.shouldBe(Condition.text(issueName));
     }
 
-    public void setPriority(int a){
+    public void setPriority(String priority){
 
-        switch(a){
-            case 1:
+        switch(priority){
+            case "low":
                 issuePrioritySelector.click();
                 issuePriorityLow.click();
                 break;
-            case 2:
+            case "medium":
                 issuePrioritySelector.click();
                 issuePriorityMedium.click();
                 break;
-            case 3:
+            case "high":
                 issuePrioritySelector.click();
                 issuePriorityHigh.click();
             break;
-            case 4:
+            case "critical":
                 issuePrioritySelector.click();
                 issuePriorityCritical.click();
             break;
