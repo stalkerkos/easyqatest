@@ -1,25 +1,27 @@
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import com.easyqa.qa.pages.*;
 import com.easyqa.qa.pages.util.CardData;
 import com.easyqa.qa.pages.util.UserData;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 import static com.codeborne.selenide.Selenide.*;
 
 public class FirstTests {
 
-    @BeforeClass(alwaysRun = true)
+    @BeforeSuite(alwaysRun = true)
     public void setUp() throws Exception {
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--ignore-certificate-errors");
         Configuration.browser="chrome";
-        Configuration.browserSize="1600x1000";
-
+        //Configuration.browserSize="1600x1000";
     }
-/*
-    @Test
+
+   @Test
     public void loginAsRegisteredUser() throws Exception {
         LoginPage loginPage = open("https://app.geteasyqa.com/users/sign_in",LoginPage.class);
         loginPage.enterLogin("stalkerskos@yandex.ru");
@@ -38,7 +40,7 @@ public class FirstTests {
         ProjectsPage projectsPage = dashboardPage.openMyProjects();
         projectsPage.checkProjectsPage();
     }
-*/
+
     @Test
     public void createCard(){
         CardData issue = new CardData("test2","test description");

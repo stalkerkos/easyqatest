@@ -2,6 +2,7 @@ package com.easyqa.qa.pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 
 public class IssuesPage {
@@ -44,15 +45,18 @@ public class IssuesPage {
     @FindBy(xpath = "//div[@class='card_message']")
     public SelenideElement cardName;
 
+    @Step
     public void checkIssuesPage() {
         issuesHeader.shouldBe(Condition.appear);
         addNewIssuesBtn.shouldBe(Condition.appear);
     }
 
+    @Step
     public void clickAddNewIssue() {
         addNewIssuesBtn.click();
     }
 
+    @Step
     public void setIssueTypeBug() {
         issueTypeSelector.click();
         issueTypeBug.click();
@@ -66,6 +70,7 @@ public class IssuesPage {
 
     }*/
 
+    @Step
     public void AddNewIssue(String issueName, String issueDesc, String priority){
         issueSummary.click();
         issueSummary.sendKeys(issueName);
@@ -79,10 +84,12 @@ public class IssuesPage {
         issueSaveBtn.click();
     }
 
+    @Step
     public void checkIssueAdded(String issueName){
         cardName.shouldBe(Condition.text(issueName));
     }
 
+    @Step
     public void setPriority(String priority){
 
         switch(priority){

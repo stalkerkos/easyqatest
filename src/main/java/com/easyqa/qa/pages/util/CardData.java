@@ -1,5 +1,7 @@
 package com.easyqa.qa.pages.util;
 
+import io.qameta.allure.Step;
+
 public class CardData {
     private String cardName;
     private String cardDescription;
@@ -9,9 +11,11 @@ public class CardData {
         this.cardName=cardName;
         this.cardDescription=cardDescription;
     }
-        public String getCardName(){
+    @Step
+    public String getCardName(){
         return this.cardName;
     }
+    @Step
     public String getCardDescription(){
         return this.cardDescription;
     }
