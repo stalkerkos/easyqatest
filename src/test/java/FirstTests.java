@@ -18,7 +18,7 @@ public class FirstTests {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--ignore-certificate-errors");
         Configuration.browser="chrome";
-        //Configuration.browserSize="1600x1000";
+        Configuration.browserSize="1600x1000";
     }
 
    @Test
